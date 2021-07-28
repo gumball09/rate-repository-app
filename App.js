@@ -1,21 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { NativeRouter } from 'react-router-native'; // USE OF ROUTER
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+import { ApolloProvider } from '@apollo/client'; // Provide Apollo client instance to all components
+import createApolloClient from './src/utils/apolloClient'; // Create Apollo client
+import AuthStorage from './src/utils/AuthStorage'; // Create storage for storing token for authentication
+import AuthStorageContext from './src/contexts/AuthStorageContext'; // Provide authStorage context to hooks from App.js
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+import Main from './src/components/Main';
+
+const authStorage = new AuthStorage();
+const apolloClient = createApolloClient(authStorage);
+
+const App = () => (
+  <NativeRouter>
+    <ApolloProvider client={apolloClient}>
+      <AuthStorageContext.Provider value={authStorage}>
+        <Main />
+      </AuthStorageContext.Provider>
+    </ApolloProvider>
+  </NativeRouter>
+);
+
+export default App;
