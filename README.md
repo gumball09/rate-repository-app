@@ -10,7 +10,10 @@ This is a host repository for mobile web application `rate repository`\
 - Add new blog
 
 ### Setup:
+1. Set up Expo
+2.
 - Clone this repo
 - Run `npm install` or `yarn install` to download the required modules
 - Run `npm start` or `yarn start` to run the application
-* Make sure that the back-end is also running so that data can be fetched
+
+_Make sure that the back-end is also running so that data can be fetched_
