@@ -11,7 +11,7 @@ This is a host repository for mobile web application `rate repository`\
 
 ### Setup:
 1. Set up Expo
-2.
+2. Application setup
 - Clone this repo
 - Run `npm install` or `yarn install` to download the required modules
 - Run `npm start` or `yarn start` to run the application
